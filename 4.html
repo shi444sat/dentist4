@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bright Smile Dental | Modern Family Clinic</title>
+  <!-- Font Awesome 6 (free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #1f2937;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #2d7a9b;        /* calm teal-blue */
+      --primary-dark: #1f5e7a;
+      --accent: #7bc6d4;          /* soft accent */
+      --gray-light: #f8fafc;
+      --gray-border: #e9edf2;
+      --text-dark: #1e293b;
+      --text-muted: #546e7a;
+      --white: #ffffff;
+      --shadow-sm: 0 8px 20px rgba(0, 40, 60, 0.08);
+      --shadow-hover: 0 15px 30px rgba(43, 108, 136, 0.15);
+      --transition: all 0.25s ease;
+    }
+
+    /* ===== UTILITIES ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto 48px auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      padding: 12px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(45, 122, 155, 0.2);
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(31, 94, 122, 0.3);
+    }
+
+    /* ===== STICKY HEADER ===== */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      border-bottom: 1px solid var(--gray-border);
+      z-index: 1000;
+      padding: 12px 0;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+      font-weight: 300;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: var(--transition);
+      font-size: 1rem;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Mobile menu toggle (hidden on desktop) */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: var(--primary-dark);
+      cursor: pointer;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 80%);
+      padding: 40px 0 60px;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .hero-content .clinic-name {
+      color: var(--primary);
+    }
+
+    .hero-content .tagline {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      min-height: 280px;
+      background: #cbd5e1; /* placeholder bg */
+    }
+
+    .hero-image:hover {
+      transform: scale(1.01);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--white);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: var(--gray-light);
+      border-radius: 24px;
+      padding: 32px 20px 28px;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .service-card i {
+      font-size: 3.2rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: var(--gray-light);
+    }
+
+    .about-grid {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 2 1 300px;
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+
+    .about-text .mission {
+      font-style: italic;
+      background: white;
+      padding: 24px;
+      border-radius: 18px;
+      margin: 24px 0 0;
+      border-left: 6px solid var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-image {
+      flex: 1 1 250px;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .about-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: white;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial-card {
+      background: var(--gray-light);
+      padding: 28px 26px;
+      border-radius: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .testimonial-card p {
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .author-info h4 {
+      font-weight: 600;
+    }
+
+    .stars {
+      color: #fbbf24; /* gold */
+      margin-top: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: var(--gray-light);
+    }
+
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 48px;
+      border-radius: 36px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px 22px;
+      border: 1px solid var(--gray-border);
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: white;
+    }
+
+    textarea {
+      border-radius: 30px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(45, 122, 155, 0.15);
+    }
+
+    .contact-form .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #162b36;
+      color: #e2e8f0;
+      padding: 48px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 18px;
+      font-size: 1.2rem;
+    }
+
+    .footer-col p, .footer-col i {
+      margin-bottom: 8px;
+      color: #cbd5e1;
+    }
+
+    .footer-col i {
+      width: 24px;
+      margin-right: 8px;
+    }
+
+    .social-links a {
+      color: #cbd5e1;
+      font-size: 1.4rem;
+      margin-right: 18px;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid #254e5c;
+      color: #94a3b8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .section-title { font-size: 2rem; }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 24px 0;
+        gap: 18px;
+        text-align: center;
+        border-top: 1px solid var(--gray-border);
+        margin-top: 12px;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .hero-content h1 { font-size: 2.4rem; }
+      .hero-container { flex-direction: column-reverse; }
+
+      .contact-form { padding: 30px 20px; }
+      .about-grid { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .btn { width: 100%; text-align: center; }
+      .hero-content .btn { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <!-- STICKY HEADER (fixed navigation) -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <h2>Bright<span>Smile</span></h2>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="menu"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME / HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1>Modern dentistry <br><span class="clinic-name">BrightSmile Dental</span></h1>
+          <p class="tagline">Experience compassionate care in a calm, modern environment. Your smile is our mission.</p>
+          <a href="#contact" class="btn">📅 Book an Appointment</a>
+        </div>
+        <div class="hero-image">
+          <!-- demo image of dentist/clinic - replace with real photo -->
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%232d7a9b'/%3E%3Ctext x='60' y='200' font-family='Arial' font-size='28' fill='%23ffffff'%3EDentist &amp; team%3C/text%3E%3Ctext x='60' y='260' font-family='Arial' font-size='18' fill='%23d9f0f7'%3E%5BYour clinic image%5D%3C/text%3E%3C/svg%3E"
+               alt="BrightSmile clinic demo" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE / SECTION (linked from nav) -->
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="about-text">
+          <h3>About Dr. Sarah Chen & team</h3>
+          <p>At BrightSmile Dental, we combine expertise with empathy. Dr. Chen (DDS, University of Washington) has 12+ years of experience in aesthetic and family dentistry. We believe in preventive care and building lifelong relationships with our patients.</p>
+          <div class="mission">
+            <strong>📋 Our mission</strong><br>
+            To provide accessible, high-quality dental care in a relaxed atmosphere — because everyone deserves a healthy smile.
+          </div>
+        </div>
+        <div class="about-image">
+          <!-- demo image of dentist (replace) -->
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%237bc6d4'/%3E%3Ctext x='70' y='160' font-family='Arial' font-size='22' fill='%231e293b'%3EDr. Sarah Chen%3C/text%3E%3C/svg%3E"
+               alt="Dr. Chen demo">
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION (cards with icons) -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">Our services</h2>
+        <p class="section-subtitle">Comprehensive dental care for the whole family — from routine checkups to smile transformations.</p>
+        <div class="cards-grid">
+          <div class="service-card">
+            <i class="fas fa-tooth"></i>
+            <h3>Checkups</h3>
+            <p>Regular exams & cleanings to keep your smile bright.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-teeth"></i>
+            <h3>Braces</h3>
+            <p>Orthodontic solutions (Invisalign & traditional).</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-whitening"></i>
+            <h3>Teeth Whitening</h3>
+            <p>Professional whitening for a dazzling smile.</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-crown"></i>
+            <h3>Crowns & Veneers</h3>
+            <p>Restorative and cosmetic options.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION (dummy) -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2 class="section-title">Patient stories</h2>
+        <p class="section-subtitle">Real experiences from our lovely patients.</p>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <p>"I used to be anxious about dental visits, but Dr. Chen and her team are so gentle and kind. My teeth have never felt better!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">JD</div>
+              <div class="author-info">
+                <h4>Jessica D.</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p>"Invisalign treatment at BrightSmile was smooth and faster than expected. I love my new smile. Highly recommend!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">MT</div>
+              <div class="author-info">
+                <h4>Michael T.</h4>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p>"My kids actually look forward to their checkups because the staff is so friendly. Great with children!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">LR</div>
+              <div class="author-info">
+                <h4>Linda R.</h4>
+                <div class="stars">★★★★☆</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Request an appointment</h2>
+        <p class="section-subtitle">We'll get back to you within 24 hours. No obligations.</p>
+        <div class="contact-form">
+          <form id="demoContactForm">
+            <div class="form-group">
+              <input type="text" placeholder="Full name" name="name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email address" name="email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Phone number" name="phone">
+            </div>
+            <div class="form-group">
+              <textarea rows="4" placeholder="Your message or preferred date/time..." name="message"></textarea>
+            </div>
+            <button type="submit" class="btn">📩 Send message (demo)</button>
+            <p style="font-size: 0.8rem; margin-top: 12px; color: #64748b;">*Demo — no data is stored. Replace with backend.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER with dummy address, social links -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>BrightSmile Dental</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Smile Avenue, Suite 100<br>Anytown, ST 12345</p>
+        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> hello@brightsmile.demo</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Mon–Fri: 8:00 AM – 5:00 PM</p>
+        <p>Saturday: 9:00 AM – 2:00 PM</p>
+        <p>Sunday: closed</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      <p>© 2025 BrightSmile Dental — Demo website for cold pitching. All demo content replaceable.</p>
+    </div>
+  </footer>
+
+  <!-- SIMPLE JAVASCRIPT: mobile menu toggle + form alert demo -->
+  <script>
+    (function() {
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const navMenu = document.getElementById('navMenu');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+          navMenu.classList.toggle('show');
+        });
+
+        // Close menu after clicking a link (smooth)
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+              navMenu.classList.remove('show');
+            }
+          });
+        });
+      }
+
+      // Contact form demo (prevent actual submit, show alert)
+      const form = document.getElementById('demoContactForm');
+      if (form) {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          alert('✨ Demo form: thank you! In the real version, this would send an email or save to CRM. Replace with your backend logic.');
+          // optionally reset
+          form.reset();
+        });
+      }
+
+      // Smooth scroll for nav links (if any MUA issues)
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#" || href === "") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- small style adjustment for active hover on cards etc. already in css -->
+</body>
+</html>
